@@ -50,7 +50,7 @@ const About = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
             <p className="text-lg text-gray-700 mb-8">
-              At Bolt, we're committed to democratizing access to blockchain technology.
+              At Ratso, we're committed to democratizing access to blockchain technology.
               Our platform bridges the gap between complex blockchain systems and everyday users,
               making decentralized applications accessible to everyone.
             </p>

@@ -31,7 +31,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Have questions about Bolt? We're here to help! Send us a message and we'll get back to you as soon as possible.
+            Have questions about RATSO? We're here to help! Send us a message and we'll get back to you as soon as possible.
           </p>
         </div>
 
