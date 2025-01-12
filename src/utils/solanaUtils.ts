@@ -7,6 +7,13 @@ export const NETWORKS = {
   devnet: clusterApiUrl('devnet'),
 };
 
+// Define a custom type for transactions
+interface Transaction {
+  signature: string;
+  blockTime: number | null;
+  slot: number;
+}
+
 // Token symbols (add more tokens here as needed)
 const TOKEN_SYMBOLS: Record<string, string> = {
   So11111111111111111111111111111111111111112: 'SOL', // Native Solana token
@@ -19,7 +26,7 @@ export const createConnection = (endpoint: string): Connection => {
     return new Connection(endpoint);
   } catch (error) {
     console.error('Error creating connection:', error);
-    throw error;
+    throw new Error('Failed to create a connection to the Solana network');
   }
 };
 
@@ -72,19 +79,13 @@ export const getTokenAccounts = async (
 export const getRecentTransactions = async (
   connection: Connection,
   publicKey: PublicKey,
-  limit: number = 10 // Optional limit parameter
-): Promise<
-  {
-    signature: string;
-    blockTime: number | null | undefined;
-    slot: number;
-  }[]
-> => {
+  limit: number = 10
+): Promise<Transaction[]> => {
   try {
     const transactions = await connection.getSignaturesForAddress(publicKey, { limit });
     return transactions.map(tx => ({
       signature: tx.signature,
-      blockTime: tx.blockTime ?? null, // Handle undefined blockTime gracefully
+      blockTime: tx.blockTime ?? null, // Handle undefined by converting to null
       slot: tx.slot,
     }));
   } catch (error) {
